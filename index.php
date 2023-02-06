@@ -33,18 +33,21 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">DataTable with default features</h3>
+                                <h3 class="card-title">Data Siswa</h3><br>
+                                <button class="btn btn-success">Tambah Data +</button>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
-                                            <th>Rendering engine</th>
-                                            <th>Browser</th>
-                                            <th>Platform(s)</th>
-                                            <th>Engine version</th>
-                                            <th>CSS grade</th>
+                                            <th>No</th>
+                                            <th>Nama Lengkap</th>
+                                            <th>Nis</th>
+                                            <th>Alamat</th>
+                                            <th>Foto</th>
+                                            <th>Action</th>
+                                            <th></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -56,6 +59,8 @@
                                             <td>Win 95+</td>
                                             <td> 4</td>
                                             <td>X</td>
+                                            <td><button class="btn btn-success">edit</button></td>
+                                            <td><button class="btn btn-danger">hapus</button></td>
                                         </tr>
                                     </tbody>
                                 </table>
