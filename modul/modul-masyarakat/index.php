@@ -2,14 +2,14 @@
 <html lang="en">
 
 <!-- header -->
-<?php include('assets/header.php') ?>
+<?php include('../../assets/header.php') ?>
 
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
 
         <!-- Preloader -->
         <div class="preloader flex-column justify-content-center align-items-center">
-            <img class="animation__shake" src="assets/dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+            <img class="animation__shake" src="../../assets/dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
         </div>
 
         <!-- Navbar -->
@@ -24,7 +24,7 @@
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
-        <?php include('assets/menu.php'); ?>
+        <?php include('../../assets/menu.php'); ?>
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Main content -->
@@ -42,23 +42,25 @@
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>Nama Lengkap</th>
-                                            <th>Nis</th>
-                                            <th>Alamat</th>
-                                            <th>Foto</th>
+                                            <th>Nik</th>
+                                            <th>Nama</th>
+                                            <th>Username</th>
+                                            <th>Password</th>
+                                            <th>Telepon</th>
+                                            <th>Verifikasi</th>
                                             <th>Action</th>
                                             <th></th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>Trident</td>
-                                            <td>Internet
-                                                Explorer 4.0
-                                            </td>
-                                            <td>Win 95+</td>
-                                            <td> 4</td>
-                                            <td>X</td>
+                                            <td>1</td>
+                                            <td>Nik</td>
+                                            <td>Nama Lengkap</td>
+                                            <td>Username</td>
+                                            <td>Password</td>
+                                            <td>Telepon</td>
+                                            <td>Verifikasi</td>
                                             <td><button class="btn btn-success">edit</button></td>
                                             <td><button class="btn btn-danger">hapus</button></td>
                                         </tr>
@@ -92,7 +94,7 @@
         <!-- /.control-sidebar -->
     </div>
     <!-- ./wrapper -->
-    <?php include('assets/footer.php') ?>
+    <?php include('../../assets/footer.php') ?>
 
 </body>
 
