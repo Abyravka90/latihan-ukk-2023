@@ -1,7 +1,7 @@
 <?php
 include('../../config/database.php');
 if (isset($_POST['cek'])) {
-    $pilihan = $_POST['pilihan'];
+    $pilihan = $_POST['pilihan']; //masyarakat atau petugas
     $username = $_POST['username'];
     $password = md5($_POST['password']);
     if ($pilihan == 'masyarakat') {
@@ -15,10 +15,16 @@ if (isset($_POST['cek'])) {
             @header('location:../../modul/modul-masyarakat/');
         }
     } else if ($pilihan == 'petugas') {
+        $q = mysqli_query($con, "SELECT * FROM `petugas` WHERE username = '$username' AND password = '$password'");
+        $r = mysqli_num_rows($q);
+        if ($r == 1) {
+            $d = mysqli_fetch_object($q);
+            @session_start();
+            $_SESSION['username'] = $d->username;
+            $_SESSION['level'] = $d->level;
+            @header('location:../../modul/modul-petugas/');
+        }
     }
-
-    // echo $username;
-    // echo $password;
 }
 ?>
 <!DOCTYPE html>
