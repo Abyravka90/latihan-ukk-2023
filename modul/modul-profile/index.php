@@ -4,10 +4,16 @@
 session_start();
 if (empty($_SESSION['username'])) {
     @header('location:../modul-auth/index.php');
+} else {
+    $nik = $_SESSION['nik'];
+    $nama = $_SESSION['nama'];
+    $username = $_SESSION['username'];
+    $telp = $_SESSION['telp'];
 }
 ?>
 <!-- header -->
 <?php include('../../assets/header.php') ?>
+<?= $username ?>
 
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
@@ -36,7 +42,19 @@ if (empty($_SESSION['username'])) {
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12">
-
+                        <div class="card">
+                            <div class="card-header">
+                                <i class="fa fa-user-circle"></i><strong>Profil</strong>
+                            </div>
+                            <div class="card-body">
+                                <div class="card col-md-auto">
+                                    <div class="card-header">Nik : <?= $nik ?></div>
+                                    <div class="card-header">Nama : <?= $nama ?></div>
+                                    <div class="card-header">Username : <?= $username ?></div>
+                                    <div class="card-header">Tlp : <?= $telp ?></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <!-- /.col -->
                 </div>

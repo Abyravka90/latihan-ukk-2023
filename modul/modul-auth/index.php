@@ -10,11 +10,14 @@ if (isset($_POST['cek'])) {
         if ($r == 1) {
             $d = mysqli_fetch_object($q);
             @session_start();
+            $_SESSION['nik'] = $d->nik;
             $_SESSION['username'] = $d->username;
+            $_SESSION['nama'] = $d->nama;
+            $_SESSION['telp'] = $d->telp;
             $_SESSION['level'] = 'masyarakat';
             @header('location:../../modul/modul-masyarakat/');
         } else {
-            echo '<div class="alert alert-warning alert-dismissable"><a href="" class="close" data-dismiss="alert">x</a> <strong class="text-white">Data anda belum di verifikasi</strong></div>';
+            echo '<div class="alert alert-danger alert-dismissable"><a href="" class="close" data-dismiss="alert">x</a> <strong class="text-white">Data salah atau belum di verifikasi</strong></div>';
         }
     } else if ($pilihan == 'petugas') {
         $q = mysqli_query($con, "SELECT * FROM `petugas` WHERE username = '$username' AND password = '$password'");
@@ -23,6 +26,7 @@ if (isset($_POST['cek'])) {
             $d = mysqli_fetch_object($q);
             @session_start();
             $_SESSION['username'] = $d->username;
+            $_SESSION['level'] = $d->level;
             $_SESSION['level'] = $d->level;
             // @header('location:../../modul/modul-petugas/');
         }

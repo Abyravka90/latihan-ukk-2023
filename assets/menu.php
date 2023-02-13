@@ -26,18 +26,10 @@
                with font-awesome or any other icon font library -->
 
                 <li class="nav-item">
-                    <a href="pages/widgets.html" class="nav-link">
+                    <a href="http://<?= $_SERVER['SERVER_NAME'] ?>/latihan-ukk-2023/modul/modul-profile/" class="nav-link">
                         <i class="nav-icon fas fa-user-circle"></i>
                         <p>
-                            User
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="http://<?= $_SERVER['SERVER_NAME'] ?>/latihan-ukk-2023/modul/modul-masyarakat" class="nav-link">
-                        <i class="nav-icon fas fa-users"></i>
-                        <p>
-                            Masyarakat
+                            Profil
                         </p>
                     </a>
                 </li>
@@ -46,6 +38,14 @@
                         <i class="nav-icon fas fa-exclamation-circle"></i>
                         <p>
                             Pengaduan
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="http://<?= $_SERVER['SERVER_NAME'] ?>/latihan-ukk-2023/modul/modul-masyarakat" class="nav-link">
+                        <i class="nav-icon fas fa-users"></i>
+                        <p>
+                            Masyarakat
                         </p>
                     </a>
                 </li>
