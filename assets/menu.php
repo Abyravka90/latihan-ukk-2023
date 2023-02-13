@@ -13,7 +13,7 @@
                 <img src="../../assets/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block">Asep Cahya Nugraha</a>
+                <a href="#" class="d-block"><?= $_SESSION['username'] ?></a>
             </div>
         </div>
 

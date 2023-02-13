@@ -1,8 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<?php
+session_start();
+if (empty($_SESSION['username'])) {
+    @header('location:../modul-auth/index.php');
+}
+?>
 <!-- header -->
 <?php include('../../assets/header.php') ?>
+<?= $_SESSION['username'] ?>
 
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">

@@ -5,7 +5,7 @@ if (isset($_POST['cek'])) {
     $username = $_POST['username'];
     $password = md5($_POST['password']);
     if ($pilihan == 'masyarakat') {
-        $q = mysqli_query($con, "SELECT * FROM `masyarakat` WHERE username = '$username' AND password = '$password'");
+        $q = mysqli_query($con, "SELECT * FROM `masyarakat` WHERE username = '$username' AND password = '$password' AND verifikasi = 1");
         $r = mysqli_num_rows($q);
         if ($r == 1) {
             $d = mysqli_fetch_object($q);
@@ -13,6 +13,8 @@ if (isset($_POST['cek'])) {
             $_SESSION['username'] = $d->username;
             $_SESSION['level'] = 'masyarakat';
             @header('location:../../modul/modul-masyarakat/');
+        } else {
+            echo '<div class="alert alert-warning alert-dismissable"><a href="" class="close" data-dismiss="alert">x</a> <strong class="text-white">Data anda belum di verifikasi</strong></div>';
         }
     } else if ($pilihan == 'petugas') {
         $q = mysqli_query($con, "SELECT * FROM `petugas` WHERE username = '$username' AND password = '$password'");
@@ -22,7 +24,7 @@ if (isset($_POST['cek'])) {
             @session_start();
             $_SESSION['username'] = $d->username;
             $_SESSION['level'] = $d->level;
-            @header('location:../../modul/modul-petugas/');
+            // @header('location:../../modul/modul-petugas/');
         }
     }
 }
@@ -40,7 +42,7 @@ if (isset($_POST['cek'])) {
         <section class="content ">
             <div class="container-fluid">
                 <div class="row justify-content-md-center">
-                    <div class="col-md-3" style="margin-top:10%">
+                    <div class="col-md-3" style="margin-top:5%">
                         <!-- jquery validation -->
                         <div class="card card-primary">
                             <div class="card-header">
@@ -65,7 +67,7 @@ if (isset($_POST['cek'])) {
                                         </select>
                                     </div>
                                     <div class="form-group mb-0">
-                                        <span class="text text-success">Belum terdaftar?</span>Silahkan daftar <a href="">disini</a>
+                                        <span class="text text-success">Belum terverifikasi?</span>Coba daftar <a href="registrasi.php">disini</a>
                                     </div>
                                 </div>
                                 <div class="card-footer">
