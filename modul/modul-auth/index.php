@@ -15,7 +15,7 @@ if (isset($_POST['cek'])) {
             $_SESSION['nama'] = $d->nama;
             $_SESSION['telp'] = $d->telp;
             $_SESSION['level'] = 'masyarakat';
-            @header('location:../../modul/modul-masyarakat/');
+            @header('location:../../modul/modul-profile/');
         } else {
             echo '<div class="alert alert-danger alert-dismissable"><a href="" class="close" data-dismiss="alert">x</a> <strong class="text-white">Data salah atau belum di verifikasi</strong></div>';
         }
@@ -28,7 +28,7 @@ if (isset($_POST['cek'])) {
             $_SESSION['username'] = $d->username;
             $_SESSION['level'] = $d->level;
             $_SESSION['level'] = $d->level;
-            // @header('location:../../modul/modul-petugas/');
+            @header('location:../../modul/modul-petugas/');
         }
     }
 }

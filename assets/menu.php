@@ -41,14 +41,17 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="http://<?= $_SERVER['SERVER_NAME'] ?>/latihan-ukk-2023/modul/modul-masyarakat" class="nav-link">
-                        <i class="nav-icon fas fa-users"></i>
-                        <p>
-                            Masyarakat
-                        </p>
-                    </a>
-                </li>
+                <?php if ($_SESSION['level'] == 'admin') { ?>
+                    <li class="nav-item">
+                        <a href="http://<?= $_SERVER['SERVER_NAME'] ?>/latihan-ukk-2023/modul/modul-masyarakat" class="nav-link">
+                            <i class="nav-icon fas fa-users"></i>
+                            <p>
+                                Masyarakat
+                            </p>
+                        </a>
+                    </li>
+
+                <?php } ?>
                 <li class="nav-item">
                     <a href="http://<?= $_SERVER['SERVER_NAME'] ?>/latihan-ukk-2023/modul/modul-tanggapan" class="nav-link">
                         <i class="nav-icon fas fa-reply"></i>

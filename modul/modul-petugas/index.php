@@ -29,7 +29,11 @@
         <div class="content-wrapper">
             <!-- Main content -->
             <div class="container-fluid">
-                Modul Petugas
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="alert alert-success alert-dismissable">Selamat Datang <strong> <?= $_SESSION['username'] ?> </strong> anda Login Sebagai <strong><?= $_SESSION['level'] ?></strong> <a class="close" href="" data-dismiss="alert">x</a></div>
+                    </div>
+                </div>
                 <!-- /.row -->
             </div>
             <!-- /.container-fluid -->

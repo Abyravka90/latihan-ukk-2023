@@ -42,6 +42,7 @@ if (empty($_SESSION['username'])) {
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12">
+                        <div class="alert alert-success alert-dismissable">Selamat Datang <strong><?= $_SESSION['username'] ?></strong> anda Login Sebagai <strong><?= $_SESSION['level'] ?></strong> <a class="close" href="" data-dismiss="alert">x</a></div>
                         <div class="card">
                             <div class="card-header">
                                 <i class="fa fa-user-circle"></i><strong>Profil</strong>
