@@ -24,15 +24,18 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
+                <?php if ($_SESSION['level'] == 'masyarakat') { ?>
 
-                <li class="nav-item">
-                    <a href="http://<?= $_SERVER['SERVER_NAME'] ?>/latihan-ukk-2023/modul/modul-profile/" class="nav-link">
-                        <i class="nav-icon fas fa-user-circle"></i>
-                        <p>
-                            Profil
-                        </p>
-                    </a>
-                </li>
+                    <li class="nav-item">
+                        <a href="http://<?= $_SERVER['SERVER_NAME'] ?>/latihan-ukk-2023/modul/modul-profile/" class="nav-link">
+                            <i class="nav-icon fas fa-user-circle"></i>
+                            <p>
+                                Profil
+                            </p>
+                        </a>
+                    </li>
+
+                <?php } ?>
                 <li class="nav-item">
                     <a href="http://<?= $_SERVER['SERVER_NAME'] ?>/latihan-ukk-2023/modul/modul-pengaduan" class="nav-link">
                         <i class="nav-icon fas fa-exclamation-circle"></i>
