@@ -34,10 +34,24 @@ if (isset($_POST['tambahPengaduan'])) {
     }
 }
 
-// hapus
+// hapus pengaduan
 if (isset($_POST['hapus'])) {
     $id_pengaduan = $_POST['id_pengaduan'];
+    if ($id_pengaduan != '') {
+        $q = "SELECT `foto` FROM `pengaduan` WHERE id_pengaduan = $id_pengaduan";
+        $r = mysqli_query($con, $q);
+        $d = mysqli_fetch_object($r);
+        unlink('../../assets/images/masyarakat/' . $d->foto);
+    }
     $q = "DELETE FROM `pengaduan` WHERE id_pengaduan = $id_pengaduan";
+    $r = mysqli_query($con, $q);
+}
+
+// rubah status pengaduan
+if (isset($_POST['proses_pengaduan'])) {
+    $id_pengaduan = $_POST['id_pengaduan'];
+    $status = $_POST['status'];
+    $q = "UPDATE `pengaduan` SET status = '$status' WHERE id_pengaduan = '$id_pengaduan'";
     $r = mysqli_query($con, $q);
 }
 ?>
@@ -78,11 +92,15 @@ if (isset($_POST['hapus'])) {
                         <div class="card">
                             <div class="card-header">
                                 <h3 class="card-title">Pengaduan</h3><br>
-                                <div class="card">
-                                    <div class="card-header">
-                                        <button data-toggle="modal" data-target="#modal-lg" class="btn btn-success">buat pengaduan&nbsp;<i class="fa fa-pen"></i></button>
+                                <?php if ($_SESSION['level'] == 'masyarakat') { ?>
+
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <button data-toggle="modal" data-target="#modal-lg" class="btn btn-success">buat pengaduan&nbsp;<i class="fa fa-pen"></i></button>
+                                        </div>
                                     </div>
-                                </div>
+
+                                <?php } ?>
                                 <div class="modal fade" id="modal-lg">
                                     <div class="modal-dialog modal-lg">
                                         <div class="modal-content">
@@ -107,9 +125,8 @@ if (isset($_POST['hapus'])) {
                                                     <input type="submit" name="tambahPengaduan" value="simpan" class="btn btn-success">
                                                 </form>
                                             </div>
-                                            <!-- /.modal-content -->
+                                            <!-- /.modal-dialog -->
                                         </div>
-                                        <!-- /.modal-dialog -->
                                     </div>
                                 </div>
                                 <div class="card-body">
@@ -154,7 +171,18 @@ if (isset($_POST['hapus'])) {
                                                             <form action="" method="post"><input type="hidden" name="id_pengaduan" value="<?= $d->id_pengaduan ?>"><button type="submit" name="hapus" class="btn btn-danger"><i class="fa fa-trash"></i></button></form>
                                                         <?php } ?>
                                                     </td>
-                                                    <td></td>
+                                                    <td><?php if ($_SESSION['level'] == 'petugas') { ?>
+                                                            <form action="" method="post">
+                                                                <input type="hidden" name="id_pengaduan" value="<?= $d->id_pengaduan ?>">
+                                                                <select class="form-control" name="status">
+                                                                    <option value="0"> 0 </option>
+                                                                    <option value="proses"> proses </option>
+                                                                    <option value="selesai"> selesai </option>
+                                                                </select><br>
+                                                                <button type="submit" name="proses_pengaduan" class="btn btn-success form-control">ubah</button>
+                                                            </form>
+                                                        <?php } ?>
+                                                    </td>
                                                 </tr>
                                             <?php $no++;
                                             } ?>

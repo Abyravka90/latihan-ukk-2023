@@ -27,7 +27,7 @@ if (isset($_POST['cek'])) {
             @session_start();
             $_SESSION['username'] = $d->username;
             $_SESSION['level'] = $d->level;
-            $_SESSION['level'] = $d->level;
+            $_SESSION['id_petugas'] = $d->id_petugas;
             @header('location:../../modul/modul-petugas/');
         }
     }

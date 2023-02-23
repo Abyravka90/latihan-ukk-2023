@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 23 Feb 2023 pada 02.39
+-- Waktu pembuatan: 23 Feb 2023 pada 09.30
 -- Versi server: 10.4.25-MariaDB
 -- Versi PHP: 8.0.23
 
@@ -64,9 +64,8 @@ CREATE TABLE `pengaduan` (
 --
 
 INSERT INTO `pengaduan` (`id_pengaduan`, `tgl_pengaduan`, `nik`, `isi_laporan`, `foto`, `status`) VALUES
-(1, '2023-02-20', '10504841990', 'KEBAKARAN', '', '0'),
-(2, '2023-02-20', '16171819201995', 'PENCURIAN', '', '0'),
-(15, '2023-02-23', '10504841990', 'kebakaran', '1.jpg', '0');
+(1, '2023-02-20', '10504841990', 'KEBAKARAN', '', 'selesai'),
+(2, '2023-02-20', '16171819201995', 'PENCURIAN', '', 'selesai');
 
 -- --------------------------------------------------------
 
@@ -104,6 +103,14 @@ CREATE TABLE `tanggapan` (
   `tanggapan` text NOT NULL,
   `id_petugas` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `tanggapan`
+--
+
+INSERT INTO `tanggapan` (`id_tanggapan`, `id_pengaduan`, `tgl_tanggapan`, `tanggapan`, `id_petugas`) VALUES
+(14, 1, '2023-02-23', 'CUKUP BAIK', 1),
+(15, 2, '2023-02-23', 'kurang', 1);
 
 --
 -- Indexes for dumped tables
@@ -153,7 +160,7 @@ ALTER TABLE `petugas`
 -- AUTO_INCREMENT untuk tabel `tanggapan`
 --
 ALTER TABLE `tanggapan`
-  MODIFY `id_tanggapan` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_tanggapan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
@@ -164,13 +171,6 @@ ALTER TABLE `tanggapan`
 --
 ALTER TABLE `pengaduan`
   ADD CONSTRAINT `pengaduan_ibfk_1` FOREIGN KEY (`nik`) REFERENCES `masyarakat` (`nik`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Ketidakleluasaan untuk tabel `tanggapan`
---
-ALTER TABLE `tanggapan`
-  ADD CONSTRAINT `tanggapan_ibfk_1` FOREIGN KEY (`id_petugas`) REFERENCES `petugas` (`id_petugas`),
-  ADD CONSTRAINT `tanggapan_ibfk_2` FOREIGN KEY (`id_tanggapan`) REFERENCES `pengaduan` (`id_pengaduan`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
