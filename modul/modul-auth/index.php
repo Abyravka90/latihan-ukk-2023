@@ -64,6 +64,7 @@ if (isset($_POST['cek'])) {
                                         <label for="exampleInputPassword1">Password</label>
                                         <input type="password" name="password" class="form-control" placeholder="Masukan Password">
                                     </div>
+                                    <label for="pilihan">.:LOGIN SEBAGAI:.</label>
                                     <div class="form-group">
                                         <select class="form-control" name="pilihan">
                                             <option value="masyarakat">masyarakat</option>

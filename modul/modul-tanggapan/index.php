@@ -25,6 +25,13 @@ if (isset($_POST['hapusTanggapan'])) {
     $id_tanggapan = $_POST['id_tanggapan'];
     mysqli_query($con, "DELETE FROM `tanggapan` WHERE id_tanggapan = '$id_tanggapan'");
 }
+// update tanggapan
+if (isset($_POST['ubahTanggapan'])) {
+    $id_tanggapan =  $_POST['id_tanggapan'];
+    $tgl_tanggapan = $_POST['tgl_tanggapan'];
+    $tanggapan = $_POST['tanggapan'];
+    mysqli_query($con, "UPDATE `tanggapan` SET tgl_tanggapan = '$tgl_tanggapan', tanggapan = '$tanggapan' WHERE `id_tanggapan` = '$id_tanggapan'");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -137,10 +144,14 @@ if (isset($_POST['hapusTanggapan'])) {
                                             <?= $d->nama_petugas ?>
                                         </td>
                                         <td>
-                                            <form action="" method="post"><input type="hidden" name="id_tanggapan" value="<?= $d->id_tanggapan ?>"><button name="hapusTanggapan" class="btn btn-danger" type="submit"><i class="fa fa-trash"></i>&nbsp;hapus</button></form>
+                                            <?php if ($_SESSION['level'] != 'masyarakat') { ?>
+                                                <form action="" method="post"><input type="hidden" name="id_tanggapan" value="<?= $d->id_tanggapan ?>"><button name="hapusTanggapan" class="btn btn-danger" type="submit"><i class="fa fa-trash"></i>&nbsp;hapus</button></form>
+                                            <?php } ?>
                                         </td>
                                         <td>
-                                            <button class="btn btn-success" data-toggle="modal" data-target="#modal-lg<?= $d->id_pengaduan ?>" class="btn btn-success"><i class="fa fa-pen"></i>&nbsp;Edit</button>
+                                            <?php if ($_SESSION['level'] != 'masyarakat') { ?>
+                                                <button class="btn btn-success" data-toggle="modal" data-target="#modal-lg<?= $d->id_pengaduan ?>" class="btn btn-success"><i class="fa fa-pen"></i>&nbsp;Edit</button>
+                                            <?php } ?>
                                         </td>
                                     </tr>
                                     <div class="modal fade" id="modal-lg<?= $d->id_pengaduan ?>">
@@ -149,25 +160,27 @@ if (isset($_POST['hapusTanggapan'])) {
                                                 <div class="modal-header">
                                                     Edit Pengaduan
                                                 </div>
-                                                <div class="modal-body">
-                                                    <input class="form-control" name="id_tanggapan" type="hidden" value="<?= $d->id_tanggapan ?>">
-                                                    <label for="id_pengaduan">ID Pengaduan</label><br>
-                                                    <select class="form-control" name="id_pengaduan">
-                                                        <?php
-                                                        $result = mysqli_query($con, "SELECT * FROM `pengaduan` JOIN `masyarakat` WHERE pengaduan.nik = masyarakat.nik");
-                                                        while ($data = mysqli_fetch_object($result)) { ?>
-                                                            <option value="<?= $data->id_pengaduan ?>" <?php if ($d->id_pengaduan == $data->id_pengaduan) {
-                                                                                                            echo 'selected';
-                                                                                                        } ?>><?= $data->id_pengaduan . '|' . $data->nik . '|' . $data->nama ?></option>
-                                                        <?php } ?>
-                                                    </select><br>
-                                                    <label for="tgl_tanggapan">Tanggal Tanggapan</label>
-                                                    <input class="form-control" name="tgl_tanggapan" class="form-control" type="date" name="" value="<?= $d->tgl_tanggapan ?>">
-                                                    <label for="tanggapan">Tanggapan</label>
-                                                    <textarea class="form-control" name="Tanggapan" id="" cols="30" rows="10"><?= $d->tanggapan ?></textarea>
-                                                    <br>
-                                                    <button name="ubahTanggapan" type="submit" class="btn btn-info">Update</button>
-                                                </div>
+                                                <form action="" method="post">
+                                                    <div class="modal-body">
+                                                        <input class="form-control" name="id_tanggapan" type="hidden" value="<?= $d->id_tanggapan ?>">
+                                                        <label for="id_pengaduan">ID Pengaduan</label><br>
+                                                        <select class="form-control" name="id_pengaduan">
+                                                            <?php
+                                                            $result = mysqli_query($con, "SELECT * FROM `pengaduan` JOIN `masyarakat` WHERE pengaduan.nik = masyarakat.nik");
+                                                            while ($data = mysqli_fetch_object($result)) { ?>
+                                                                <option value="<?= $data->id_pengaduan ?>" <?php if ($d->id_pengaduan == $data->id_pengaduan) {
+                                                                                                                echo 'selected';
+                                                                                                            } ?>><?= $data->id_pengaduan . '|' . $data->nik . '|' . $data->nama ?></option>
+                                                            <?php } ?>
+                                                        </select><br>
+                                                        <label for="tgl_tanggapan">Tanggal Tanggapan</label>
+                                                        <input class="form-control" name="tgl_tanggapan" class="form-control" type="date" name="" value="<?= $d->tgl_tanggapan ?>">
+                                                        <label for="tanggapan">Tanggapan</label>
+                                                        <textarea class="form-control" name="tanggapan" id="" cols="30" rows="10"><?= $d->tanggapan ?></textarea>
+                                                        <br>
+                                                        <button name="ubahTanggapan" type="submit" class="btn btn-info">Update</button>
+                                                    </div>
+                                                </form>
                                             </div>
 
                                         </div>
